@@ -1,14 +1,12 @@
-// src/websocket.js
-
-// Determine the host based on the environment
-const host = process.env.NODE_ENV === 'production' ? window.location.host.replace(/^http/, 'ws') : 'ws://localhost:5173';
+// Determine the WebSocket URL based on the environment
+const host = process.env.NODE_ENV === 'production' ? `wss://${window.location.host}/chat` : 'ws://localhost:5173/chat';
 
 export let send;
 let onMessageCallback;
 
 export const startWebsocketConnection = () => {
   // Initialize WebSocket connection
-  const ws = new WebSocket(host + '/chat'); // Make sure '/chat' is the correct endpoint on your server
+  const ws = new WebSocket(host);
 
   // WebSocket event handlers
   ws.onopen = () => {
