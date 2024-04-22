@@ -1,3 +1,4 @@
+
 // Determine the WebSocket URL based on the environment
 const host = process.env.NODE_ENV === 'production' ? `wss://${window.location.host}/chat` : 'ws://localhost:5173/chat';
 
